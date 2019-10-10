@@ -1,35 +1,66 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import './css/App.css';
 import './css/main.css';
 import Products from './components/Products';
-import products from './products';
 import Filter from './components/Filter';
-import Cart from './components/Cart';
 import { store } from './store';
+import base from './base';
 
 // function App() {
 class App extends Component {
   componentDidMount() {
-    if (localStorage.getItem('cartItems')) {
-      this.setState({
-        cartItems: JSON.parse(localStorage.getItem('cartItems'))
-      });
-    }
+    this.ref = base.syncState(`test/products`, {
+      context: this,
+      state: 'products'
+    });
+    console.log(this.ref);
   }
-
   render() {
     return (
       <Provider store={store}>
         <div className="shopping-container">
+          <div className="gallery">
+            <figure className="gallery__item">
+              <img
+                src="img/hotel-1.jpg"
+                alt="hotel 1"
+                className="gallery__photo"
+              />
+            </figure>
+            <figure className="gallery__item">
+              <img
+                src="img/hotel-2.jpg"
+                alt="hotel 2"
+                className="gallery__photo"
+              />
+            </figure>
+            <figure className="gallery__item">
+              <img
+                src="img/hotel-3.jpg"
+                alt="hotel 3"
+                className="gallery__photo"
+              />
+            </figure>
+          </div>
           <Filter />
           <hr />
           <Products />
-          <Cart />
         </div>
       </Provider>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    products: state.products.filteredProducts,
+    cartItems: state.cart.items
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(App);

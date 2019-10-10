@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import {
   filterProductsBySize,
   sortProductsByPrice
@@ -19,9 +18,9 @@ function Filter(props) {
   return (
     <div className="filter-row">
       <div>
-        {/* {this.props.count > 1
-            ? this.props.count`products found.`
-            : this.props.count`product found.`} */}
+        {/* {props.filteredProducts.length > 1
+          ? props.filteredProducts.length`products found.`
+          : props.filteredProducts.length`product found.`} */}
         {props.filteredProducts.length} products found.
         <label htmlFor="">
           Order by

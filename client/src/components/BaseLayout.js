@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import Nav from './Nav';
 
 export default class BaseLayout extends Component {
   render() {
@@ -8,7 +7,7 @@ export default class BaseLayout extends Component {
       <div className="container">
         <Header />
         <div className="content">
-          <Nav />
+          {/* <Nav /> */}
           <main className="main-view">{this.props.children}</main>
         </div>
       </div>

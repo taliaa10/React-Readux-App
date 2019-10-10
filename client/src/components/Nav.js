@@ -6,7 +6,7 @@ class Nav extends Component {
     return (
       <nav className="sidebar">
         <ul className="side-nav">
-          <img src="img/user.jpg" alt="" className="user-sidenav__user-photo" />
+          {/* <img src="img/user.jpg" alt="" className="user-sidenav__user-photo" /> */}
           <li className="side-nav__item side-nav__item--active">
             <NavLink to="/" className="side-nav__link">
               <svg className="side-nav__icon">

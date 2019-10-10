@@ -12,6 +12,7 @@ export const fetchProducts = () => {
 };
 
 export const filterProductsBySize = (size, products) => {
+  console.log(size.toUpperCase());
   return dispatch => {
     dispatch({
       type: FILTER_PRODUCTS_BY_SIZE,
@@ -21,7 +22,9 @@ export const filterProductsBySize = (size, products) => {
           // products
           size === ''
             ? products
-            : products.filter(a => a.availableSizes.indexOf(size.toUpperCase()))
+            : products.filter(a =>
+                a.availableSizes.includes(size.toUpperCase())
+              )
       }
     });
   };
